@@ -5,10 +5,10 @@ node('master') {
   stage('Build') {
     bat label: '', script: 'mvn clean install'
   }
-  stage('CopyArtifact') {
-     bat label: '', script: 'xcopy C:\\Jenkins\\workspace\\BatchJob\\target\\WebApplication.war C:\\New_folder\\Jenkins_Artifact /y '
- }
+ // stage('CopyArtifact') {
+ //    bat label: '', script: 'xcopy C:\\Jenkins\\workspace\\BatchJob\\target\\WebApplication.war C:\\New_folder\\Jenkins_Artifact /y '
+ //}
  stage('deploying artifact') {
-    bat 'mvn weblogic:deploy'
+    bat 'mvn C:\\Jenkins\\workspace\\BatchJob\\target\\WebApplication.war weblogic:deploy'
 }
 }
