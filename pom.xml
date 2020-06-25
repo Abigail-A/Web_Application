@@ -23,7 +23,7 @@
   <groupId>com.oracle.weblogic</groupId>
   <artifactId>weblogic-maven-plugin</artifactId>
   <version>2.9.5</version>
-</dependenc>
+</dependency>
 	  <dependency>
   <groupId>com.oracle.weblogic</groupId>
   <artifactId>jms-internal-notran-adp</artifactId>
