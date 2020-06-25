@@ -23,7 +23,7 @@
   <build>
     <finalName>WebApplication</finalName>
 		<sourceDirectory>src</sourceDirectory>
-		<plugins
+		<plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
