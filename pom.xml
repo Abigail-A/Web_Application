@@ -19,6 +19,11 @@
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 		</dependency>
+	  <dependency>
+  <groupId>com.oracle.weblogic</groupId>
+  <artifactId>weblogic-maven-plugin</artifactId>
+  <version>12.2.1-3-0</version>
+</dependency>
   </dependencies>
   <build>
     <finalName>WebApplication</finalName>
