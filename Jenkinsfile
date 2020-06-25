@@ -9,6 +9,6 @@ node('master') {
      bat label: '', script: 'xcopy C:\\Jenkins\\workspace\\BatchJob\\target\\WebApplication.war C:\\New_folder\\Jenkins_Artifact /y '
  }
  stage('deploying artifact') {
-    mvn weblogic:deploy
- }
+    bat 'mvn weblogic:deploy'
+}
 }
