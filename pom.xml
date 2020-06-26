@@ -30,6 +30,32 @@
                 <version>2.4</version>
             </plugin>
 			<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-antrun-plugin</artifactId>
+    <version>1.6</version>
+    <executions>
+        <execution>
+            <id>deploy-to-server</id>
+            <phase>pre-integration-test</phase>
+            <configuration>
+                <tasks>
+                <property environment="env"/>
+                <taskdef name="wldeploy" classpath="C:/Oracle/Middleware/Oracle_Home/wlserver/server/lib/weblogic.jar"
+                      classname="weblogic.ant.taskdefs.management.WLDeploy"/>
+                <wldeploy action="deploy" verbose="true" source="C:/New_folder/Jenkins_Artifact/WebApplication.war"
+                      name="marin-tips" user="abigail" password="Abigail@123"
+                      adminurl="t3://localhost:7001"
+                      targets="AdminServer"/>
+            </tasks>
+            </configuration>
+            <goals>
+                <goal>run</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>    
+
+			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
