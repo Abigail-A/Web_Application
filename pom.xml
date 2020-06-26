@@ -58,10 +58,10 @@
                 <property environment="env"/>
                 <taskdef name="wldeploy" classpath="C:/Oracle/Middleware/Oracle_Home/wlserver/server/lib/weblogic.jar"
                       classname="weblogic.ant.taskdefs.management.WLDeploy"/>
-                <wldeploy action="deploy" verbose="true" source="../BatchJob/target/WebApplication.war"
+                <wldeploy action="deploy" verbose="true" source="C:/New_folder/Jenkins_Artifact/WebApplication.war"
                       name="marin-tips" user="abigail" password="Abigail@123"
                       adminurl="t3://localhost:7001"
-                      targets="myserver"/>
+                      targets="AdminServer"/>
             </tasks>
             </configuration>
             <goals>
