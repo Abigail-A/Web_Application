@@ -1,7 +1,7 @@
 node('master') {
-  stage('CheckOut') {
+ /* stage('CheckOut') {
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'LocalGit', url: 'https://github.com/Abigail-A/Web_Application.git']]])
-  }
+  }*/
   stage('Build') {
     bat label: '', script: 'mvn clean install'
   }
