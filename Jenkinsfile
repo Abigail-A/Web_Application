@@ -1,4 +1,15 @@
-node('master') {
+pipeline {
+                agent {
+                                label 'master'
+                }
+                tools{
+                                maven 'MAVEN_HOME'
+                }
+
+
+ stages{
+
+//node('master') {
  // stage('CheckOut') {
 //    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'LocalGit', url: 'https://github.com/Abigail-A/Web_Application.git']]])
  // }
@@ -17,4 +28,5 @@ node('master') {
  //  bat label: '', script: '''cd C:\\New_folder\\Jenkins_Artifact\\WebApplication.war
    //mvn weblogic:deploy'''
 //}
+}
 }
