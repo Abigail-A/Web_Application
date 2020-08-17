@@ -14,10 +14,14 @@ pipeline {
 //    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'LocalGit', url: 'https://github.com/Abigail-A/Web_Application.git']]])
  // }
   stage('clean') {
+    steps{
     bat label: '', script: 'mvn clean'
+    }
   }
  stage('Build') {
+   steps{
     bat label: '', script: 'mvn install'
+   }
   }
  // stage('CopyArtifact') {
  //    bat label: '', script: 'xcopy C:\\Jenkins\\workspace\\BatchJob\\target\\WebApplication.war C:\\New_folder\\Jenkins_Artifact /y '
