@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurper
 
 def checkStatus() {
-        def statusUrl = httpRequest authentication: 'jenkins_id', consoleLogResponseBody: true, responseHandle: 'NONE', url: 'http://localhost:8080/job/WebLogicDeploy/lastBuild/api/json'
+        def statusUrl = httpRequest authentication: 'jenkins_id', responseHandle: 'NONE', url: 'http://localhost:8080/job/WebLogicDeploy/lastBuild/api/json'
         def statusJson = new JsonSlurper().parseText(statusUrl.getContent())
 
         return statusJson['result']       
@@ -42,23 +42,23 @@ stage('check Job status'){
 
         steps{
 		script{
-        if(checkStatus() == "RUNNING" ){
+      /*  if(checkStatus() == "RUNNING" ){
             timeout(time: 60, unit: 'MINUTES') {
             waitUntil {
                  def status = checkStatus()
                  return  (status == "SUCCESS" || status == "FAILURE" || status == "UNSTABLE" || status == "ABORTED")
           }
         }
-        }
+        }*/
 
 
 
         if( checkStatus() != "SUCCESS" ){
-            error('Stopping Job B becuase job A is not successful.')
+            error('Stopping pipeline job because of other job failure')
         }
 		else
 		{
-		echo 'success'
+		echo 'successfully deployed'
 		}
 		}
 		}
