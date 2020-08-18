@@ -58,7 +58,7 @@ stage('check Job status'){
         }
 		else
 		{
-		info('success')
+		echo 'success'
 		}
 		}
 		}
