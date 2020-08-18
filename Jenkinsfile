@@ -42,14 +42,14 @@ stage('check Job status'){
 
         steps{
 		script{
-      /*  if(checkStatus() == "RUNNING" ){
+       if(checkStatus() == "RUNNING" ){
             timeout(time: 60, unit: 'MINUTES') {
             waitUntil {
                  def status = checkStatus()
                  return  (status == "SUCCESS" || status == "FAILURE" || status == "UNSTABLE" || status == "ABORTED")
           }
         }
-        }*/
+        }
 
 
 
