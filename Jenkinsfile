@@ -1,3 +1,12 @@
+
+def checkStatus() {
+        def statusUrl = httpRequest "https://ecdp3.aepsc.com/jenkins/job/ITMP_PDS_HCLSCAN/lastBuild/api/json"
+        def statusJson = new JsonSlurper().parseText(statusUrl.getContent())
+
+        return statusJson['result']       
+
+}
+
 pipeline {
                 agent {
                                 label 'master'
@@ -23,6 +32,36 @@ pipeline {
     bat label: '', script: 'mvn install'
    }
   }
+  stage('deploy') {
+   steps{
+    build 'WebLogicDeploy'
+   }
+  }
+stage('check Job status'){
+
+        steps{
+		script{
+        if(checkStatus() == "RUNNING" ){
+            timeout(time: 60, unit: 'MINUTES') {
+            waitUntil {
+                 def status = checkStatus()
+                 return  (status == "SUCCESS" || status == "FAILURE" || status == "UNSTABLE" || status == "ABORTED")
+          }
+        }
+        }
+
+
+
+        if( checkStatus() != "SUCCESS" ){
+            error('Stopping Job B becuase job A is not successful.')
+        }
+		else
+		{
+		info('success')
+		}
+		}
+		}
+}
  // stage('CopyArtifact') {
  //    bat label: '', script: 'xcopy C:\\Jenkins\\workspace\\BatchJob\\target\\WebApplication.war C:\\New_folder\\Jenkins_Artifact /y '
  //}
