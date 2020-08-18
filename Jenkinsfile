@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurper
 
 def checkStatus() {
-        def statusUrl = httpRequest "https://ecdp3.aepsc.com/jenkins/job/ITMP_PDS_HCLSCAN/lastBuild/api/json"
+        def statusUrl = httpRequest "http://localhost:8080/job/WebLogicDeploy/lastBuild/api/json"
         def statusJson = new JsonSlurper().parseText(statusUrl.getContent())
 
         return statusJson['result']       
