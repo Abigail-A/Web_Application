@@ -55,6 +55,7 @@ stage('check Job status'){
 
        if(checkStatus() == "RUNNING" ){
             timeout(time: 60, unit: 'MINUTES') {
+	 def status = checkStatus()	    
        if( status != "SUCCESS" ){
             error('Stopping pipeline job because of other job failure')
         }
