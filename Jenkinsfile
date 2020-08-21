@@ -53,8 +53,8 @@ stage('check Job status'){
         }*/
 
 
-       if(checkStatus() == "RUNNING" ){
-            timeout(time: 60, unit: 'MINUTES') {
+     /*  if(checkStatus() == "RUNNING" ){
+            timeout(time: 60, unit: 'MINUTES') {*/
 		    
        if( checkStatus() != "SUCCESS" ){
             error('Stopping pipeline job because of other job failure')
@@ -63,8 +63,8 @@ stage('check Job status'){
 		{
 		echo 'successfully deployed'
 		}
-	    }
-       }
+	  /*  }
+       }*/
 		}
 		}
 }
