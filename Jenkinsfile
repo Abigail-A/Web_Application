@@ -46,7 +46,7 @@ stage('check Job status'){
             timeout(time: 60, unit: 'MINUTES') {
             waitUntil {
                  def status = checkStatus()
-		   echo '$status' 
+		   echo 'status' 
                  return  (status == "SUCCESS" || status == "FAILURE" || status == "UNSTABLE" || status == "ABORTED")
           }
         }
