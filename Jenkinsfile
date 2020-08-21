@@ -42,7 +42,7 @@ stage('check Job status'){
 
         steps{
 		script{
-       if(checkStatus() == "RUNNING" ){
+      /* if(checkStatus() == "RUNNING" ){
             timeout(time: 60, unit: 'MINUTES') {
             waitUntil {
                  def status = checkStatus()
@@ -50,17 +50,20 @@ stage('check Job status'){
                  return  (status == "SUCCESS" || status == "FAILURE" || status == "UNSTABLE" || status == "ABORTED")
           }
         }
-        }
+        }*/
 
 
-
-       /* if( status != "SUCCESS" ){
+       if(checkStatus() == "RUNNING" ){
+            timeout(time: 60, unit: 'MINUTES') {
+       if( status != "SUCCESS" ){
             error('Stopping pipeline job because of other job failure')
         }
 		else
 		{
 		echo 'successfully deployed'
-		}*/
+		}
+	    }
+       }
 		}
 		}
 }
