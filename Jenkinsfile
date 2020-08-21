@@ -46,13 +46,7 @@ stage('check Job status'){
             timeout(time: 60, unit: 'MINUTES') {
             waitUntil {
                  def status = checkStatus()
-		     if( status != "SUCCESS" ){
-            error('Stopping pipeline job because of other job failure')
-        }
-		else
-		{
-		echo 'successfully deployed'
-		}
+		    
                  return  (status == "SUCCESS" || status == "FAILURE" || status == "UNSTABLE" || status == "ABORTED")
           }
         }
@@ -60,13 +54,13 @@ stage('check Job status'){
 
 
 
-     /*   if( checkStatus() != "SUCCESS" ){
+        if( status != "SUCCESS" ){
             error('Stopping pipeline job because of other job failure')
         }
 		else
 		{
 		echo 'successfully deployed'
-		}*/
+		}
 		}
 		}
 }
