@@ -29,6 +29,14 @@
     <finalName>WebApplication</finalName>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
+		<profiles>
+        <profile>
+            <id>deploy to weblogic</id>
+            <activation>
+                <property>
+                    <name>deploy.to.weblogic</name>
+                </property>
+            </activation>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -51,7 +59,62 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-			
+  <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>properties-maven-plugin</artifactId>
+    <version>1.0-alpha-2</version>
+    <executions>
+      <execution>
+        <phase>initialize</phase>
+        <goals>
+          <goal>read-project-properties</goal>
+        </goals>
+      </execution>
+    </executions>
+    <configuration>
+      <files>
+        <file>weblogic.properties</file>
+      </files>
+    </configuration>
+  </plugin>
+                    <plugin>
+                        <groupId>com.oracle.weblogic</groupId>
+                        <artifactId>weblogic-maven-plugin</artifactId>
+                        <version>10.3.4</version>
+                        <configuration>
+                            <adminurl>t3://${wl.host}:${wl.port}</adminurl>
+                            <targets>${wl.targets}</targets>
+                            <user>${wl.username}</user>
+                            <password>${wl.password}</password>
+                            <upload>true</upload>
+                            <remote>true</remote>
+                            <verbose>true</verbose>
+                            <name>pds</name>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>deploy latest build</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                                <configuration>
+                                    <action>pds</action>
+                                    <source>${wl.location}\WebApplication.war</source>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+        </profile>
+        <profile>
+            <id>package for weblogic</id>
+            <activation>
+                <property>
+                    <name>package.for.weblogic</name>
+                </property>
+            </activation>
+        </profile>
 		</plugins>
 	</build>
 </project>
