@@ -115,6 +115,6 @@
                 </property>
             </activation>
         </profile>
-		</plugins>
+			</profiles>
 	</build>
 </project>
