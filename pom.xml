@@ -25,11 +25,7 @@
 			<version>2.5</version>
 	  </dependency>
   </dependencies>
-  <build>
-    <finalName>WebApplication</finalName>
-		<sourceDirectory>src</sourceDirectory>
-		<plugins>
-		<profiles>
+<profiles>
         <profile>
             <id>deploy to weblogic</id>
             <activation>
@@ -37,6 +33,11 @@
                     <name>deploy.to.weblogic</name>
                 </property>
             </activation>
+  <build>
+    <finalName>WebApplication</finalName>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -106,6 +107,7 @@
                         </executions>
                     </plugin>
                 </plugins>
+	  	</build>
         </profile>
         <profile>
             <id>package for weblogic</id>
@@ -116,5 +118,4 @@
             </activation>
         </profile>
 			</profiles>
-	</build>
 </project>
