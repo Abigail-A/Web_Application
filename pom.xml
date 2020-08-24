@@ -90,7 +90,7 @@
                             <upload>true</upload>
                             <remote>true</remote>
                             <verbose>true</verbose>
-                            <name>pds</name>
+                            <name>WebApplication</name>
                         </configuration>
                         <executions>
                             <execution>
@@ -100,7 +100,7 @@
                                     <goal>deploy</goal>
                                 </goals>
                                 <configuration>
-                                    <action>pds</action>
+                                    <action>WebApplication</action>
                                     <source>${wl.location}</source>
                                 </configuration>
                             </execution>
