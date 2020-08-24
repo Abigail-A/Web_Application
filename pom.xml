@@ -101,7 +101,7 @@
                                 </goals>
                                 <configuration>
                                     <action>pds</action>
-                                    <source>${wl.location}\WebApplication.war</source>
+                                    <source>${wl.location}</source>
                                 </configuration>
                             </execution>
                         </executions>
