@@ -35,7 +35,8 @@ pipeline {
   }
   stage('deploy') {
    steps{
-    build 'WebLogicDeploy'
+    //build 'WebLogicDeploy'
+	   bat label: '', script: 'mvn -f pom.xml clean package -Ddeploy.to.weblogic'
    }
   }
 stage('check Job status'){
