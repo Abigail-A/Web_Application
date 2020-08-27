@@ -1,5 +1,6 @@
-import groovy.json.JsonSlurper
 properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([string(defaultValue: '', description: 'host name', name: 'wl.host', trim: false), string(defaultValue: '', description: 'port number', name: 'wl.port', trim: false), string(defaultValue: '', description: 'target server', name: 'wl.targets', trim: false), string(defaultValue: '', description: 'ear file location', name: 'wl.location', trim: false), string(defaultValue: '', description: 'username', name: 'wl.username', trim: false), password(defaultValue: '', description: 'password', name: 'wl.password')])])
+
+import groovy.json.JsonSlurper
 def checkStatus() {
         def statusUrl = httpRequest authentication: 'jenkins_id', url: 'http://localhost:8080/job/WebLogicDeploy/lastBuild/api/json'
         def statusJson = new JsonSlurper().parseText(statusUrl.getContent())
