@@ -36,7 +36,9 @@ pipeline {
   }
 stage('Properties file values')
 	 {
-		 echo ${wl.host}  
+		 steps{
+		 echo ${wl.host}
+		 }
 	 }
   stage('deploy') {
    steps{
