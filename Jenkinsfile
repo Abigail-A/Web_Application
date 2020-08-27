@@ -33,6 +33,10 @@ pipeline {
     bat label: '', script: 'mvn install'
    }
   }
+stage('Properties file values')
+	 {
+		 echo ${wl.host}  
+	 }
   stage('deploy') {
    steps{
     //build 'WebLogicDeploy'
