@@ -1,4 +1,4 @@
-properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([string(defaultValue: '', description: 'host name', name: 'wl.host', trim: false), string(defaultValue: '', description: 'port number', name: 'wl.port', trim: false), string(defaultValue: '', description: 'target server', name: 'wl.targets', trim: false), string(defaultValue: '', description: 'ear file location', name: 'wl.location', trim: false), string(defaultValue: '', description: 'username', name: 'wl.username', trim: false), password(defaultValue: '', description: 'password', name: 'wl.password')])])
+properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([string(defaultValue: '', description: 'host name', name: 'host', trim: false), string(defaultValue: '', description: 'port number', name: 'port', trim: false), string(defaultValue: '', description: 'target server', name: 'targets', trim: false), string(defaultValue: '', description: 'ear file location', name: 'location', trim: false), string(defaultValue: '', description: 'username', name: 'username', trim: false), password(defaultValue: '', description: 'password', name: 'password')])])
 
 import groovy.json.JsonSlurper
 def checkStatus() {
@@ -37,7 +37,7 @@ pipeline {
 stage('Properties file values')
 	 {
 		 steps{
-		 bat "${wl.host}"
+		 bat "${host}"
 		 }
 	 }
   stage('deploy') {
