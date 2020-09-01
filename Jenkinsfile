@@ -34,12 +34,12 @@ pipeline {
     bat label: '', script: 'mvn install'
    }
   }
-stage('Properties file values')
+/*stage('Properties file values')
 	 {
 		 steps{
 		 bat "${Environment}"
 		 }
-	 }
+	 }*/
   stage('deploy') {
    steps{
     //build 'WebLogicDeploy'
