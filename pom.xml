@@ -83,10 +83,10 @@
                         <artifactId>weblogic-maven-plugin</artifactId>
                         <version>10.3.4</version>
                         <configuration>
-                            <adminurl>t3://${wl.host}:${wl.port}</adminurl>
-                            <targets>${wl.targets}</targets>
-                            <user>${wl.username}</user>
-                            <password>${wl.password}</password>
+                            <adminurl>t3://${${wl}.host}:${${wl}.port}</adminurl>
+                            <targets>${${wl}.targets}</targets>
+                            <user>${${wl}.username}</user>
+                            <password>${${wl}.password}</password>
                             <upload>true</upload>
                             <remote>true</remote>
                             <verbose>true</verbose>
@@ -101,7 +101,7 @@
                                 </goals>
                                 <configuration>
                                     <action>WebApplication</action>
-                                    <source>${wl.location}</source>
+                                    <source>${${wl}.location}</source>
                                 </configuration>
                             </execution>
                         </executions>
