@@ -1,4 +1,4 @@
-properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([string(defaultValue: '', description: 'host name', name: 'host', trim: false), string(defaultValue: '', description: 'port number', name: 'port', trim: false), string(defaultValue: '', description: 'target server', name: 'targets', trim: false), string(defaultValue: '', description: 'ear file location', name: 'location', trim: false), string(defaultValue: '', description: 'username', name: 'username', trim: false), password(defaultValue: '', description: 'password', name: 'password')])])
+properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([choice(choices: ['Test', 'Dev', 'QA'], description: '', name: 'Environment')])])
 
 import groovy.json.JsonSlurper
 def checkStatus() {
@@ -43,7 +43,7 @@ stage('Properties file values')
   stage('deploy') {
    steps{
     //build 'WebLogicDeploy'
-	   bat label: '', script: 'mvn -f pom.xml clean package -Ddeploy.to.weblogic'
+	   bat label: '', script: 'mvn -f pom.xml clean package -Ddeploy.to.weblogic -Dwl=$Environment'
    }
   }
 stage('check Job status'){
