@@ -27,7 +27,7 @@ pipeline {
  // }
   stage('clean') {
     steps{
-    bat label: '', script: 'mvn clean'
+    //bat label: '', script: 'mvn clean'
 	    script{
 	    def props = readProperties  file:'src/weblogic.properties'
 def Var1= props['Test.host']
