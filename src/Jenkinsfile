@@ -10,8 +10,8 @@ def checkStatus() {
 }
 
 def props = readProperties  file:'weblogic.properties'
-def Var1= props['']
-def Var2= props['Tuesday']
+def Var1= props['Test.host']
+def Var2= props['Test.port']
 echo "Var1=${Var1}"
 echo "Var2=${Var2}"
 
