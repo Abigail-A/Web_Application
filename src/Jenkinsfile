@@ -54,11 +54,11 @@ echo "Var2=${Var2}"
 	   bat label: '', script: 'mvn -f pom.xml clean package -Ddeploy.to.weblogic -Dwl=$Environment'
    }
   }
-stage('check Job status'){
+/*stage('check Job status'){
 
         steps{
 		script{
-      /* if(checkStatus() == "RUNNING" ){
+      if(checkStatus() == "RUNNING" ){
             timeout(time: 60, unit: 'MINUTES') {
             waitUntil {
                  def status = checkStatus()
@@ -66,11 +66,11 @@ stage('check Job status'){
                  return  (status == "SUCCESS" || status == "FAILURE" || status == "UNSTABLE" || status == "ABORTED")
           }
         }
-        }*/
+        }
 
 
-     /*  if(checkStatus() == "RUNNING" ){
-            timeout(time: 60, unit: 'MINUTES') {*/
+      if(checkStatus() == "RUNNING" ){
+            timeout(time: 60, unit: 'MINUTES') {
 		    
        if( checkStatus() != "SUCCESS" ){
             error('Stopping pipeline job because of other job failure')
@@ -79,11 +79,11 @@ stage('check Job status'){
 		{
 		echo 'successfully deployed'
 		}
-	  /*  }
-       }*/
+	   }
+       }
 		}
 		}
-}
+}*/
  // stage('CopyArtifact') {
  //    bat label: '', script: 'xcopy C:\\Jenkins\\workspace\\BatchJob\\target\\WebApplication.war C:\\New_folder\\Jenkins_Artifact /y '
  //}
