@@ -59,6 +59,12 @@ echo "Var2=${Var2}"
 	   bat label: '', script: 'mvn -f pom.xml clean package -Ddeploy.to.weblogic -Dwl=$Environment'
    }
   }
+stage('downstream') {
+  steps{
+        def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
+        echo upstream?.shortDescription
+	}
+    }
 /*stage('check Job status'){
 
         steps{
@@ -98,11 +104,5 @@ echo "Var2=${Var2}"
  //  bat label: '', script: '''cd C:\\New_folder\\Jenkins_Artifact\\WebApplication.war
    //mvn weblogic:deploy'''
 //}
-	 stage('downstream') {
-		    steps{
-        def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
-        echo upstream?.shortDescription
-		    }
-    }
 }
 }
