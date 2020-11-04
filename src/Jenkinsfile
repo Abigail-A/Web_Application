@@ -49,9 +49,12 @@ echo "Var2=${Var2}"
 		 }
 	 }*/
   stage('deploy') {
+	when {
+         expression { params.Environment == 'Test' }
+         }
    steps{
     //build 'WebLogicDeploy'
-	   echo "environment = {params.Environment}"
+	   echo "environment = ${params.Environment}"
 	   bat label: '', script: 'mvn -f pom.xml clean package -Ddeploy.to.weblogic -Dwl=$Environment'
    }
   }
