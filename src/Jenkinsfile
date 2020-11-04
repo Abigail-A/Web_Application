@@ -61,8 +61,10 @@ echo "Var2=${Var2}"
   }
 stage('downstream') {
   steps{
+	  script{
         def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
         echo upstream?.shortDescription
+	  }
 	}
     }
 /*stage('check Job status'){
