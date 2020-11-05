@@ -56,7 +56,7 @@ echo "Var2=${Var2}"
 	   bat label: '', script: 'mvn -f pom.xml clean package -Ddeploy.to.weblogic -Dwl=${Environment}'
    }
   }
-stage('downstream') {
+/*stage('downstream') {
   steps{
 	  script{
         def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
@@ -64,7 +64,7 @@ stage('downstream') {
 	  }
 	}
     }
-/*stage('check Job status'){
+stage('check Job status'){
 
         steps{
 		script{
