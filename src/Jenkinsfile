@@ -1,4 +1,4 @@
-properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([choice(choices: ['Test', 'Dev', 'QA'], description: '', name: 'Environment')])])
+properties([[$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([choice(choices: ['Test', 'Dev', 'QA'], description: '', name: 'Environment'), string(defaultValue: '', description: '', name: 'BranchName', trim: false)])])
 
 import groovy.json.JsonSlurper
 def checkStatus() {
