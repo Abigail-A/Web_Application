@@ -29,6 +29,7 @@ pipeline {
     steps{
     //bat label: '', script: 'mvn clean'
 	    script{
+		    echo "${props.Environment}"
 	    def props = readProperties  file:'weblogic.properties'
 def Var1= props['Test.host']
 def Var2= props['Test.port']
