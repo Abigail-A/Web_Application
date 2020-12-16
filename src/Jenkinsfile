@@ -48,7 +48,7 @@ echo "Var2=${Var2}"*/
 		 steps{
 		 bat "${Environment}"
 		 }
-	 }*/
+	 }
   stage('deploy') {
    steps{
 	   input message: 'Choose the environmnet to deploy', parameters: [choice(choices: ['Test', 'Dev', 'QA'], description: '', name: 'Environment')]
@@ -56,7 +56,7 @@ echo "Var2=${Var2}"*/
 	   echo "environment = ${params.Environment}"
 	   bat label: '', script: 'mvn -f pom.xml clean package -Ddeploy.to.weblogic -Dwl=${Environment}'
    }
-  }
+  }*/
 /*stage('downstream') {
   steps{
 	  script{
