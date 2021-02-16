@@ -25,6 +25,12 @@ pipeline {
  // stage('CheckOut') {
 //    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'LocalGit', url: 'https://github.com/Abigail-A/Web_Application.git']]])
  // }
+	     stage('downstream') {
+		     steps{
+        def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
+        echo upstream?.shortDescription
+		     }
+    }
   stage('clean') {
     steps{
     //bat label: '', script: 'mvn clean'
